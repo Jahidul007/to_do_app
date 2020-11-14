@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/model/task.dart';
+import 'package:to_do_app/provider%20/task_data.dart';
 
 class AddScreenTask extends StatelessWidget {
-  final Function addTaskCallBack;
-
-
-  AddScreenTask(this.addTaskCallBack);
-
   @override
   Widget build(BuildContext context) {
     String newTaskTitle;
+
     return Container(
       color: Color(0xff757575),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20.0),
+            topRight: Radius.circular(20.0),
           ),
         ),
         child: Column(
@@ -27,16 +26,15 @@ class AddScreenTask extends StatelessWidget {
               'Add Task',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 30.0,
                 color: Colors.lightBlueAccent,
               ),
             ),
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
-              onChanged: (newText){
+              onChanged: (newText) {
                 newTaskTitle = newText;
-                print(newTaskTitle);
               },
             ),
             FlatButton(
@@ -48,7 +46,8 @@ class AddScreenTask extends StatelessWidget {
               ),
               color: Colors.lightBlueAccent,
               onPressed: () {
-                addTaskCallBack(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                Navigator.pop(context);
               },
             ),
           ],
