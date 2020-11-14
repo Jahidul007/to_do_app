@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_app/model/task.dart';
 import 'package:to_do_app/provider%20/task_data.dart';
 import 'package:to_do_app/widget/task_tile.dart';
 
