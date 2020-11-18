@@ -83,17 +83,19 @@ class TaskScreen extends StatelessWidget {
       ),
     );
   }
-moviesearch ms;
+
+  moviesearch ms;
+
   getSearchMovie() async {
-    var movie_url = await http.get("https://api.themoviedb.org/3/search/movie?api_key=3dc04d323aba0eb54d3cf909fd3d7a37&language=en-US&query=avengers");
+    var movie_url = await http.get(
+        "https://api.themoviedb.org/3/search/movie?api_key=3dc04d323aba0eb54d3cf909fd3d7a37&language=en-US&query=avengers");
     ms = moviesearch.fromJson(json.decode(movie_url.body));
 
-
-    final par= json.decode(movie_url.body);
+    final par = json.decode(movie_url.body);
 
     print(par);
 
-    for(int i = 0; i<ms.results.length;i++){
+    for (int i = 0; i < ms.results.length; i++) {
       print(ms.results[i].id);
     }
     /* var movie = Movie(
@@ -105,5 +107,4 @@ moviesearch ms;
         0;
     return movie;*/
   }
-
 }
