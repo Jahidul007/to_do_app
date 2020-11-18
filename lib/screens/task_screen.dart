@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/provider%20/task_data.dart';
 import 'package:to_do_app/screens/add_task_screen.dart';
 import 'package:to_do_app/widget/tasks_list.dart';
+
+import 'package:http/http.dart' as http;
 
 class TaskScreen extends StatelessWidget {
   @override
@@ -15,6 +19,7 @@ class TaskScreen extends StatelessWidget {
           Icons.add,
         ),
         onPressed: () {
+          getSearchMovie();
           showModalBottomSheet(
             context: context,
             builder: (context) => AddScreenTask(),
@@ -77,4 +82,20 @@ class TaskScreen extends StatelessWidget {
       ),
     );
   }
+
+  getSearchMovie() async {
+    var movie_url = await http.get("https://api.themoviedb.org/3/search/movie?api_key=3dc04d323aba0eb54d3cf909fd3d7a37&language=en-US&query=avengers");
+    Map temp = json.decode(movie_url.body);
+    print(temp['results'].length);
+
+    /* var movie = Movie(
+            id: temp['id'],
+            title: temp["original_title"] ?? "This movie is not valid",
+            image: "${URL.movie_base_poster_path}${temp["poster_path"]}" ?? "",
+            description: temp["overview"] ?? "No overview available",
+            rating: (temp['vote_average']) / 2) ??
+        0;
+    return movie;*/
+  }
+
 }
