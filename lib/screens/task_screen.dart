@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_app/model/MovieSearchModel.dart';
 import 'package:to_do_app/provider%20/task_data.dart';
 import 'package:to_do_app/screens/add_task_screen.dart';
 import 'package:to_do_app/widget/tasks_list.dart';
@@ -82,12 +83,17 @@ class TaskScreen extends StatelessWidget {
       ),
     );
   }
-
+moviesearch ms;
   getSearchMovie() async {
     var movie_url = await http.get("https://api.themoviedb.org/3/search/movie?api_key=3dc04d323aba0eb54d3cf909fd3d7a37&language=en-US&query=avengers");
-    Map temp = json.decode(movie_url.body);
-    print(temp['results'].length);
+    ms = moviesearch.fromJson(json.decode(movie_url.body));
 
+
+    Map<String, dynamic> par= json.decode(movie_url.body);
+
+    var results = Results.fromJson(par);
+    print(par['results']);
+    print(results);
     /* var movie = Movie(
             id: temp['id'],
             title: temp["original_title"] ?? "This movie is not valid",

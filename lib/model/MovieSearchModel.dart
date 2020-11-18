@@ -42,7 +42,7 @@ class Results {
   String originalTitle;
   List<int> genreIds;
   String title;
-  double voteAverage;
+  var voteAverage;
   String overview;
   String releaseDate;
 
