@@ -89,11 +89,13 @@ moviesearch ms;
     ms = moviesearch.fromJson(json.decode(movie_url.body));
 
 
-    Map<String, dynamic> par= json.decode(movie_url.body);
+    final par= json.decode(movie_url.body);
 
-    var results = Results.fromJson(par);
-    print(par['results']);
-    print(results);
+    print(par);
+   // Results results = Results.fromJson(par);
+    for(int i = 0; i<ms.results.length;i++){
+      print(ms.results[i].id);
+    }
     /* var movie = Movie(
             id: temp['id'],
             title: temp["original_title"] ?? "This movie is not valid",

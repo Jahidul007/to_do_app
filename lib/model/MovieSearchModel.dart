@@ -40,7 +40,7 @@ class Results {
   String backdropPath;
   String originalLanguage;
   String originalTitle;
-  List<int> genreIds;
+  List<dynamic> genreIds;
   String title;
   var voteAverage;
   String overview;
@@ -72,7 +72,7 @@ class Results {
     backdropPath = json['backdrop_path'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
-    genreIds = json['genre_ids'].cast<int>();
+    genreIds = json['genre_ids'];
     title = json['title'];
     voteAverage = json['vote_average'];
     overview = json['overview'];
